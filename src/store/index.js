@@ -1,33 +1,16 @@
-import { createSlice, configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 
-const initialState = {
-    counter: 0,
-    showCounter: true
-}
-
-// Reducer via react toolkit
-const counterSlice = createSlice({
-    name: 'counter',
-    initialState,
-    reducers: {
-        increment(state) {
-            state.counter++;
-        },
-        decrement(state) {
-            state.counter--;
-        },
-        increase(state, action) {
-            state.counter = state.counter + action.payload;
-        },
-        toggleCounter(state) {
-            state.showCounter = !state.showCounter;
-        }
-    }
-});
-
+// import Reducers and can be with a different name, because it has only one export default (counterSlice.reducer) from the reducer files 
+import counterReducer from './counter';
+import authReducer from './authentication';
 
 
 // Reducer via Redux approach
+
+// const initialState = {
+//     counter: 0,
+//     showCounter: true
+// }
 
 // const counterReducer = (state = initialState, action) => {
 //     if (action.type === 'increment') {
@@ -48,7 +31,6 @@ const counterSlice = createSlice({
 //             counter: state.counter - 1
 //         }
 //     }
-
 //     if (action.type === 'toggle') {
 //         return {
 //             ...state,
@@ -59,11 +41,15 @@ const counterSlice = createSlice({
 // }
 
 
+
 // configureStore is allow to create store and attach the main reducer to the store, and if we can man reducers it merges all of them into one reducer
 const store = configureStore({
-    reducer: counterSlice.reducer
+    reducer: {
+        counter: counterReducer,
+        auth: authReducer
+    }
 });
 
-export const { increment, decrement, increase, toggleCounter } = counterSlice.actions;
+
 
 export default store;
