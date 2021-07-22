@@ -7,11 +7,14 @@ const Counter = () => {
   const dispatch = useDispatch();
 
   // useSelector hook by react-redux firstly it's accept a function as in input to return the required piece of the data from the store that we need (inside the initialState in the reducer), secondly it's create the subscription automatically with the current component, therefore the component will be update the data automatically once it changes in the store, and to retrieve a specific data from the store that has combined reducers we need to mention the reducer name like (counter)  
+  // const counter = useSelector(state => state.counter);
+
   const counter = useSelector(state => state.counter.value);
   const showCounter = useSelector(state => state.counter.showCounter)
 
   const incrementHandler = () => {
-    // we need to execute the action inside a dispatch function
+    // we need to execute the action inside a dispatch function by passing the action type to the dispatch function.
+    // dispatch({ type: 'increment' });
     dispatch(increment())
   };
   const decrementHandler = () => {

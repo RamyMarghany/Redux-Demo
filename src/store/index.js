@@ -1,3 +1,5 @@
+// import { createStore } from 'redux';
+
 import { configureStore } from '@reduxjs/toolkit';
 
 // import Reducers and can be with a different name, because it has only one export default (counterSlice.reducer) from the reducer files 
@@ -40,6 +42,10 @@ import authReducer from './authentication';
 //     return state;
 // }
 
+// Pass the reducer to the store creator.
+// const store = createStore(counterReducer);
+
+
 
 
 // configureStore is allow to create store and attach the main reducer to the store, and if we can man reducers it merges all of them into one reducer
@@ -49,7 +55,6 @@ const store = configureStore({
         auth: authReducer
     }
 });
-
 
 
 export default store;
